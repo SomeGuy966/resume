@@ -1,0 +1,77 @@
+%-------------------------
+% Anthony Ge — resume, Quant Trading / Quant Research variant
+% Shared style/content lives in preamble.tex and sections/; only the parts that
+% differ between the two variants (coursework, project order, skills) are here.
+%-------------------------
+
+\documentclass[letterpaper,11pt]{article}
+\input{preamble}
+\hypersetup{pdftitle={Anthony Ge - Resume (Quant Trading / Research)},pdfauthor={Anthony Ge}}
+
+% Coursework line shown under Education
+\newcommand{\coursework}{Probability \& Stochastic Proc (3-quarter sequence), Real Analysis, Optimization, ML, Applied Statistical Learning}
+
+\begin{document}
+
+\input{sections/header}
+
+%-----------EDUCATION-----------
+\input{sections/education}
+
+%-----------EXPERIENCE-----------
+\input{sections/experience}
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{VIX Probabilistic Forecasting -- Walk-Forward Evaluation}}
+      {\small\weblink{https://github.com/SomeGuy966/implied-volatility-forecasting}{github.com/SomeGuy966/implied-volatility-forecasting}}
+      \resumeItemListStart
+        \resumeItem{Built a Python package (arch) forecasting the CBOE VIX 1 and 5 days ahead as full predictive distributions: random walk, EWMA, HAR, AR(1)-GARCH(1,1)-t and HAR-GARCH(1,1)-t, each refit at 676 no-look-ahead walk-forward origins (2024--26)}
+        \resumeItem{Evaluated with Diebold--Mariano (HAC/HLN), Kupiec and Christoffersen coverage tests, Winkler score, and pinball loss}
+        \resumeItem{Found RMSE gains over the random walk of only 2.5\% at h=1 (HAR-GARCH-t; significant under absolute loss only) and 8.5\% at h=5 (HAR, DM p<0.05); only the GARCH-t intervals pass Christoffersen independence, scoring 6--10\% better}
+        \resumeItem{Shipped as a typed package: CLI, joblib-parallel backtest (3,380 fits/horizon in \textasciitilde20 s), 62 pytest tests incl. a no-look-ahead test per model and a Monte Carlo size check of the DM test, mypy -{}-strict, CI, byte-for-byte reproducible results}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{Kalshi Weather-Market Forecasting} $|$ \emph{Python, LightGBM, pytest, mypy-strict, CI}}
+      {\small\weblink{https://github.com/SomeGuy966/weather-bot}{github.com/SomeGuy966/weather-bot}}
+      \resumeItemListStart
+        \resumeItem{Built a leakage-safe pipeline turning hourly METARs and NOAA NBM/GFS guidance into calibrated daily-high distributions for 8 U.S. cities with Kalshi markets: 586K hourly snapshots (2020--26) via strict as-of joins and chronological train/calibrate/test splits}
+        \resumeItem{Trained a calibrated 31-class LightGBM model of the high vs. a forecast/running-max anchor, cutting log-loss 30\% against NBM's own probabilistic guidance (1.49 vs. 2.12; ECE 0.004); mapped it onto Kalshi contract ladders for real-time partial-day inference}
+        \resumeItem{Archived 3.2K contracts (order-book candles, trade tape) and backtested 52K contract-hours after fees; the market was sharper at every hour and city (Brier 0.120 vs. 0.141); shipped as a documented negative result: paper-trading ledger, no capital deployed}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{S\&P 500 ARIMA vs. Random Walk -- Walk-Forward Forecast Evaluation}}
+      {\small\weblink{https://github.com/SomeGuy966/sp500_arima}{github.com/SomeGuy966/sp500\_arima}}
+      \resumeItemListStart
+        \resumeItem{Built a walk-forward evaluation of ARIMA forecasts on 50 years of daily S\&P 500 data (600 monthly re-fits, 12.6k out-of-sample days), benchmarked against random-walk and random-walk-with-drift baselines using Diebold--Mariano tests}
+        \resumeItem{Showed the AIC-selected ARIMA's 2.48\% monthly MAPE is statistically indistinguishable from a random walk (DM p = 0.93) and significantly worse at a one-day horizon (p = 0.001); 95\% prediction intervals cover only 91\% of one-day outcomes}
+        \resumeItem{Backtested a daily sign-of-forecast strategy with transaction costs (gross Sharpe 0.70 vs. 0.60 buy-and-hold, falling to 0.21 at 5 bps) and traced the gross edge to the index's lag-1 autocorrelation flipping from +0.08 (1975--89) to \textminus0.12 (2005--24)}
+        \resumeItem{Engineered as a typed Python package (statsmodels, pandas): CLI, parallel walk-forward engine, 59 tests at 95\% coverage, mypy -{}-strict, GitHub Actions CI on Python 3.11--3.13}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{BTC-USD Order-Flow Research Pipeline (C++/Python)}}
+      {\small\weblink{https://github.com/SomeGuy966/btc-trading-pipeline}{github.com/SomeGuy966/btc-trading-pipeline}}
+      \resumeItemListStart
+        \resumeItem{Built a hybrid C++/Python research pipeline for Gemini BTC-USD: REST ingest (Python and C++ implementations behind one pybind11 interface), header-only C++ order-flow features, and online Lasso inference refit every tick on a rolling 10-tick window}
+        \resumeItem{Diagnosed and fixed a state-leakage bug where a rolling-window feature was re-fed on every model refit; added regression tests}
+        \resumeItem{Profiled the Python/C++ boundary: per-feature pybind11 calls ran at 0.66$\times$ pure Python; batching all four features into a single crossing and passing trades by const reference reached 2.32$\times$ Python (3.5$\times$ over per-call), equivalence-verified before timing}
+        \resumeItem{Built JSONL record/replay for deterministic offline runs and a one-command CMake/Conan/Ninja/Poetry build; four GitHub Actions gate every PR on pytest, ruff/mypy strict, GoogleTest, and clang-format/clang-tidy (85 tests)}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------SKILLS-----------
+\section{Skills}
+  \begin{itemize}[leftmargin=0pt,labelsep=0pt,label={},topsep=2pt]
+    \small\item{
+      \textbf{Languages:} Python, C/C++, Java, MATLAB, SQL, TypeScript/JavaScript, Lua \\
+      \textbf{Quant \& ML:} statsmodels, arch (GARCH), LightGBM, CatBoost, PyTorch, TensorFlow, pandas, NumPy, SciPy, joblib \\
+      \textbf{Dev Tools:} Git, GitHub Actions, AWS (Lambda, S3, CloudWatch, CDK), pybind11, CMake, Conan, pytest, GoogleTest, mypy
+    }
+  \end{itemize}
+
+\end{document}

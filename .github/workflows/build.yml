@@ -1,4 +1,4 @@
-name: Build Resume
+name: Build Resumes
 on: [push]
 
 permissions:
@@ -12,13 +12,15 @@ jobs:
 
       - uses: xu-cheng/latex-action@v3
         with:
-          root_file: resume.tex
+          root_file: |
+            resume_swe_quantdev.tex
+            resume_quant_trading.tex
           latexmk_use_xelatex: true
 
-      - name: Update compiled PDF
+      - name: Update compiled PDFs
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add resume.pdf
-          git commit -m "Automated build: update resume.pdf" || echo "No changes to commit"
+          git add resume_swe_quantdev.pdf resume_quant_trading.pdf
+          git commit -m "Automated build: update resume PDFs" || echo "No changes to commit"
           git push
