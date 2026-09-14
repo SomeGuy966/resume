@@ -1,0 +1,175 @@
+%-------------------------
+% Resume in LaTeX
+% Author : Anthony Ge
+% Based on Jake Gutierrez's template: https://github.com/jakegut/resume
+%-------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[letterpaper,top=0.45in,bottom=0.45in,left=0.5in,right=0.5in]{geometry}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \input{glyphtounicode}
+  \pdfgentounicode=1            % keep the PDF machine-readable / ATS-parsable
+\fi
+\usepackage[sfdefault,lining]{carlito} % metric-compatible Calibri clone
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\urlstyle{same}
+
+% Section headings: bold with a rule underneath
+\titleformat{\section}{\bfseries\large\raggedright}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{1pt}{0pt}
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{\item\small{#1}}
+
+% Two-row heading: bold org / bold date, then italic role / italic location
+\newcommand{\resumeSubheading}[4]{
+  \item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{#2} \\
+      \textit{\small#3} & \textit{\small#4}
+    \end{tabular*}
+}
+
+% One-row heading; styling is left to the caller
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      #1 & #2
+    \end{tabular*}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0pt,labelsep=0pt,label={},itemsep=0pt,topsep=0pt,parsep=0pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in,labelsep=5pt,label=\textbullet,itemsep=-1pt,topsep=0pt,parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+  \textbf{\Huge Anthony Ge} \\
+  \small +1 (914) 770-5675 $|$
+  \href{mailto:anthonykouge@gmail.com}{anthonykouge@gmail.com} $|$
+  \href{https://github.com/SomeGuy966}{github.com/SomeGuy966} $|$
+  \href{https://linkedin.com/in/anthony-ge/}{linkedin.com/in/anthony-ge/}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    % \normalfont un-bolds / un-italicizes the trailing text on each row
+    \resumeSubheading
+      {Northwestern University\normalfont{} $|$ Evanston, IL}{Expected June 2028}
+      {Bachelor of Science, Computer Science and Mathematics (Double Major)}{\normalfont GPA: 3.95/4.00}
+      \resumeItemListStart
+        \resumeItem{Courses: Probability \& Stochastic Proc, ML, Applied Statistical Learning, Data Structures \& Algorithms, Real Analysis, Optimization}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Amazon}{Jun. 2026 -- Sep. 2026}
+      {SDE Intern, Amazon Prime Video}{Seattle, WA}
+      \resumeItemListStart
+        \resumeItem{Building an event-driven DataQualityObserver Lambda for Prime Video catalog export incremental feeds}
+        \resumeItem{Designing reusable observer engine, feed readers, and quality-check interfaces across EMBER/GLOBAL live and VOD feeds}
+        \resumeItem{Implementing schema conformance \& required-field checks over XML/JSONL feeds to detect malformed records and missing data}
+        \resumeItem{Emitting CloudWatch metrics, alarms, and dashboard signals to surface feed-quality defects before partner escalation}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {MedSphere}{Jan. 2026 -- Mar. 2026}
+      {Software Engineer Intern, AI}{Skokie, IL}
+      \resumeItemListStart
+        \resumeItem{Built document-to-graph pipeline extracting pharma/biotech text/metadata into graph nodes and edges}
+        \resumeItem{Implemented entity extraction and normalization (canonicalization, deduping, synonym resolution) for consistent schema at scale}
+        \resumeItem{Built relation extraction and graph construction for confidence-weighted typed edges and source-backed explanations}
+        \resumeItem{Productionized graph builds via async jobs for batch/incremental updates, plus logging/monitoring and stable APIs for consumers}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Northwestern FinTech}{Sep. 2024}
+      {Quantitative Developer}{Evanston, IL}
+      \resumeItemListStart
+        \resumeItem{Built a hybrid trading pipeline with a C++ core and Python orchestration}
+        \resumeItem{Integrated REST/WebSocket market-data clients, normalized schemas, and persisted datasets for reproducible runs}
+        \resumeItem{Developed a feature builder and real-time inference path (microstructure signals); exposed C++ modules to Python via pybind11}
+        \resumeItem{Created an event-driven backtesting harness with fee/slippage modeling and CLI reporting; added logging, tests, and handling}
+        \resumeItem{Optimized critical paths through profiling and low-latency I/O/memory tuning; packaged with CMake/Conan for 1-command setup}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------AWARDS-----------
+\section{Awards}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{USACO Platinum} (United States of America Computing Olympiad)}{}
+      \resumeItemListStart
+        \resumeItem{Qualified to Platinum (highest division) after advancing through Bronze \textrightarrow{} Silver \textrightarrow{} Gold via rated contests}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{HackPrinceton 2025 Finalist}}{}
+      \resumeItemListStart
+        \resumeItem{Built an ML pipeline to trade Kalshi high-temperature weather markets across 8 major U.S. cities using intra-day directional signals}
+        \resumeItem{Trained and validated a probabilistic bucketed-forecast model (LightGBM) on 1-minute observations plus NOAA forecasts with feature engineering and calibration to predict daily highs}
+        \resumeItem{Implemented real-time inference on streaming MADIS 1-minute data with support for partial-day inputs, producing contract-level probabilities for execution/backtesting and performance monitoring}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects/Competitions}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Optiver's Trading-At-The-Close Competition}}{}
+      \resumeItemListStart
+        \resumeItem{Developed an ensemble of ML models (CatBoost, GRU, Transformer) with 25 engineered features to predict NASDAQ stock closes}
+        \resumeItem{Performed extensive feature engineering like time-based aggregations, rank features, rolling means, and ratio features}
+        \resumeItem{Adopted a day-based validation strategy (train on first 400 days, validate on last 81 days) that aligned closely with the leaderboard}
+        \resumeItem{Integrated post-processing steps (weighted-mean subtraction) to refine predictions and further reduce error metrics}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{S\&P 500 Arima Forecasting Model -- Quantitative Research Project}}{}
+      \resumeItemListStart
+        \resumeItem{Harvested and processed 13,000+ daily S\&P 500 closing prices from 1975--2025 to develop a robust time series forecasting model}
+        \resumeItem{Used Augmented Dickey-Fuller test and ACF/PACF plots to assess stationarity and select parameters}
+        \resumeItem{Leveraged automated grid search techniques (via auto\_arima) to identify the best ARIMA (p, d, q) configuration}
+        \resumeItem{Mean Average Percentage Error: \underline{2.48\%}}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{VIX Probabilistic Forecasting via AR-GARCH (t-errors)}}{}
+      \resumeItemListStart
+        \resumeItem{Built a modular ETL \textrightarrow{} Modeling \textrightarrow{} Evaluation pipeline: loads/cleans 2010--present VIX, applies transforms, fits rolling AR(1)--GARCH(1,1), and outputs forecasts plus 80/90/95\% intervals}
+        \resumeItem{Single-command runner with config files, logging, error handling, and reproducible, versioned artifacts (CSV/plots)}
+        \resumeItem{Implemented comparison harness and reporting (tables/plots) with numerical-stability safeguards during optimization}
+        \resumeItem{Validation: beat Random Walk and EWMA ($\alpha$=0.06); test RMSE 2.10 / MAE 1.06; coverage \textasciitilde0.868/0.925/0.955; avg widths 3.98/5.28/6.51}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------SKILLS-----------
+\section{Skills}
+  \begin{itemize}[leftmargin=0pt,labelsep=0pt,label={},topsep=2pt]
+    \small\item{
+      \textbf{Languages:} Python, C/C++, Java, MATLAB, TypeScript/JavaScript, SQL, Lua \\
+      \textbf{Web \& Back-End:} Node.js, React.js, Express.js, Svelte, REST APIs, HTML/CSS \\
+      \textbf{Tools/Libraries:} PyTorch, TensorFlow, Git, GitHub Actions, AWS, Firebase, CatBoost, pandas, NumPy, pmdarima
+    }
+  \end{itemize}
+
+\end{document}
