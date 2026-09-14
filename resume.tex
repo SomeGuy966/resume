@@ -119,16 +119,6 @@
       \resumeItemListEnd
 
     \resumeProjectHeading
-      {\textbf{VIX Probabilistic Forecasting -- Walk-Forward Evaluation}}
-      {\small\weblink{https://github.com/SomeGuy966/implied-volatility-forecasting}{github.com/SomeGuy966/implied-volatility-forecasting}}
-      \resumeItemListStart
-        \resumeItem{Built a Python package (arch) forecasting the CBOE VIX 1 and 5 days ahead as full predictive distributions: random walk, EWMA, HAR, AR(1)-GARCH(1,1)-t and HAR-GARCH(1,1)-t, each refit at 676 no-look-ahead walk-forward origins (2024--26)}
-        \resumeItem{Evaluated with Diebold--Mariano (HAC/HLN), Kupiec and Christoffersen coverage tests, Winkler score, and pinball loss}
-        \resumeItem{Found RMSE gains over the random walk of only 2.5\% at h=1 (HAR-GARCH-t; significant under absolute loss only) and 8.5\% at h=5 (HAR, DM p<0.05); only the GARCH-t intervals pass Christoffersen independence, scoring 6--10\% better}
-        \resumeItem{Shipped as a typed package: CLI, joblib-parallel backtest (3,380 fits/horizon in \textasciitilde20 s), 62 pytest tests incl. a no-look-ahead test per model and a Monte Carlo size check of the DM test, mypy -{}-strict, CI, byte-for-byte reproducible results}
-      \resumeItemListEnd
-
-    \resumeProjectHeading
       {\textbf{Kalshi Weather-Market Forecasting} $|$ \emph{Python, LightGBM, pytest, mypy-strict, CI}}
       {\small\weblink{https://github.com/SomeGuy966/weather-bot}{github.com/SomeGuy966/weather-bot}}
       \resumeItemListStart
@@ -147,6 +137,15 @@
         \resumeItem{Engineered as a typed Python package (statsmodels, pandas): CLI, parallel walk-forward engine, 59 tests at 95\% coverage, mypy -{}-strict, GitHub Actions CI on Python 3.11--3.13}
       \resumeItemListEnd
 
+    \resumeProjectHeading
+      {\textbf{VIX Probabilistic Forecasting -- Walk-Forward Evaluation}}
+      {\small\weblink{https://github.com/SomeGuy966/implied-volatility-forecasting}{github.com/SomeGuy966/implied-volatility-forecasting}}
+      \resumeItemListStart
+        \resumeItem{Built a Python package (arch) forecasting the CBOE VIX 1 and 5 days ahead as full predictive distributions: random walk, EWMA, HAR, AR(1)-GARCH(1,1)-t and HAR-GARCH(1,1)-t, each refit at 676 no-look-ahead walk-forward origins (2024--26)}
+        \resumeItem{Evaluated with Diebold--Mariano (HAC/HLN), Kupiec and Christoffersen coverage tests, Winkler score, and pinball loss}
+        \resumeItem{Found RMSE gains over the random walk of only 2.5\% at h=1 (HAR-GARCH-t; significant under absolute loss only) and 8.5\% at h=5 (HAR, DM p<0.05); only the GARCH-t intervals pass Christoffersen independence, scoring 6--10\% better}
+        \resumeItem{Shipped as a typed package: CLI, joblib-parallel backtest (3,380 fits/horizon in \textasciitilde20 s), 62 pytest tests incl. a no-look-ahead test per model and a Monte Carlo size check of the DM test, mypy -{}-strict, CI, byte-for-byte reproducible results}
+      \resumeItemListEnd
   \resumeSubHeadingListEnd
 
 %-----------SKILLS-----------
