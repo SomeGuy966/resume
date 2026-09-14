@@ -13,14 +13,14 @@ jobs:
       - uses: xu-cheng/latex-action@v3
         with:
           root_file: |
-            resume_swe_quantdev.tex
-            resume_quant_trading.tex
+            CV_Anthony_Ge_SWE_QuantDev.tex
+            CV_Anthony_Ge_QuantTrading.tex
           latexmk_use_xelatex: true
 
       - name: Update compiled PDFs
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add resume_swe_quantdev.pdf resume_quant_trading.pdf
+          git add CV_Anthony_Ge_SWE_QuantDev.pdf CV_Anthony_Ge_QuantTrading.pdf
           git commit -m "Automated build: update resume PDFs" || echo "No changes to commit"
           git push
