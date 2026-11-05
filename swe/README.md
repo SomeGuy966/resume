@@ -11,6 +11,7 @@ Every superseded version is kept in [`history/`](history/), newest first.
 
 | Date | Version | What changed |
 |---|---|---|
+| 2026-11-05 | [`7973889499_2026-11-05_Anthony_Ge_Resume_SWE.pdf`](history/7973889499_2026-11-05_Anthony_Ge_Resume_SWE.pdf) | Added incoming IMC Trading quantitative trading internship (Summer 2027); MedSphere trimmed to 3 bullets; VIX trimmed for space |
 | 2026-09-15 | [`7973908499_2026-09-15_Anthony_Ge_Resume_SWE.pdf`](history/7973908499_2026-09-15_Anthony_Ge_Resume_SWE.pdf) | Amazon title spelled out as "Software Development Engineer Intern" |
 | 2026-09-14 | [`7973908595_2026-09-14_Anthony_Ge_Resume_SWE.pdf`](history/7973908595_2026-09-14_Anthony_Ge_Resume_SWE.pdf) | Split into separate SWE and quant-trading variants; coursework updated from transcript |
 | 2026-09-14 | [`7973908596_2026-09-14_Anthony_Ge_Resume_SWE.pdf`](history/7973908596_2026-09-14_Anthony_Ge_Resume_SWE.pdf) | Projects reordered for a SWE audience (BTC, Kalshi, S&P, VIX) — single combined resume |
